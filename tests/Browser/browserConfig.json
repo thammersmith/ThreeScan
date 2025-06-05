@@ -1,0 +1,72 @@
+{
+    "browsers": [
+        {
+            "name": "Chrome",
+            "version": "latest",
+            "platform": "Windows 10"
+        },
+        {
+            "name": "Chrome",
+            "version": "latest-1",
+            "platform": "Windows 10"
+        },
+        {
+            "name": "Firefox",
+            "version": "latest",
+            "platform": "Windows 10"
+        },
+        {
+            "name": "Firefox",
+            "version": "latest-1",
+            "platform": "Windows 10"
+        },
+        {
+            "name": "Edge",
+            "version": "latest",
+            "platform": "Windows 10"
+        },
+        {
+            "name": "Safari",
+            "version": "latest",
+            "platform": "macOS Monterey"
+        },
+        {
+            "name": "Safari",
+            "version": "latest-1",
+            "platform": "macOS Big Sur"
+        },
+        {
+            "name": "Chrome",
+            "version": "latest",
+            "platform": "macOS Monterey"
+        },
+        {
+            "name": "Firefox",
+            "version": "latest",
+            "platform": "macOS Monterey"
+        },
+        {
+            "name": "Chrome",
+            "version": "latest",
+            "platform": "Android 12.0",
+            "deviceName": "Google Pixel 6"
+        },
+        {
+            "name": "Safari",
+            "version": "latest",
+            "platform": "iOS 15.0",
+            "deviceName": "iPhone 13"
+        }
+    ],
+    "testSuite": [
+        "test_main_page_loads_in_browser",
+        "test_traceroute_visualization_works_in_browser",
+        "test_ui_controls_work_in_browser"
+    ],
+    "baseUrl": "http://localhost:8000",
+    "screenshotPath": "tests/Browser/screenshots",
+    "timeout": 30000,
+    "waitForTimeout": 10000,
+    "connectionRetryTimeout": 90000,
+    "connectionRetryCount": 3
+}

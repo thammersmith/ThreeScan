@@ -24,9 +24,15 @@ class TracerouteService
         if (empty($name)) {
             $name = "Trace to {$host}";
         }
+        $sanitizedHost = $this->validateHost($host);
+        if ($sanitizedHost === null) {
+            throw new InvalidArgumentException('Invalid host');
+        }
 
-        // Build the traceroute command
-        $command = $this->buildCommand($host, $options);
+        $command = $this->buildCommand($sanitizedHost, $options);
+
+//        // Build the traceroute command
+//        $command = $this->buildCommand($host, $options);
 
         // Execute the command
         $output = [];
@@ -88,6 +94,27 @@ class TracerouteService
             'hops' => $hops
         ];
     }
+
+    private function validateHost(string $host): ?string
+    {
+        // Check if the host is a valid IPv4 address
+        if (filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+            return $host;
+        }
+
+        // Check if the host is a valid IPv6 address
+        if (filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+            return $host;
+        }
+
+        // Check if the host is a valid domain name
+        if (preg_match('/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $host)) {
+            return $host;
+        }
+
+        return null; // Return null if the host is invalid
+    }
+
 
     /**
      * Build the traceroute command with options
